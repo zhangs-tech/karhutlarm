@@ -2,7 +2,9 @@
 
 ## Wokwi Web Setup
 
-Simply copy these files to wokwi:
+Links: https://wokwi.com/projects/479191049079829505
+
+Or just simply copy these files to wokwi:
 
 - `diagram.json`
 - `libraries.txt`
