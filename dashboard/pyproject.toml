@@ -1,0 +1,21 @@
+[project]
+name = "dashboard"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "KrisNathan", email = "kristopher.nathanael@binus.ac.id" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "fastapi[standard]>=0.162.0",
+    "paho-mqtt>=2.0",
+    "pydantic-settings>=2.16.2",
+]
+
+[tool.fastapi]
+entrypoint = "dashboard.main:app"
+
+[build-system]
+requires = ["uv_build>=0.12.17,<0.13.0"]
+build-backend = "uv_build"

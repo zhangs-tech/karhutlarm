@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Karhutla Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.plot.ly/plotly-4.1.1.min.js" charset="utf-8"></script>
+</head>
+<body>
+  <h1>Karhutla IoT Monitoring and Warning</h1>
+
+  <p id="error" class="error" hidden></p>
+
+  <div class="row">
+    <section class="card">
+      <div id="badge" class="badge">NO DATA</div>
+      <p id="latest">Waiting for data from the ESP32...</p>
+      <p id="freshness" class="muted"></p>
+    </section>
+    <section class="card">
+      <h2>Status changes</h2>
+      <ul id="changes"><li>None</li></ul>
+    </section>
+  </div>
+
+  <div id="chart"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -13,30 +13,29 @@ Simply copy these files to wokwi:
 - Server: `broker.hivemq.com`
 - Topic: `bingus-sic-6767420/sensors`
 
-## Python Dashboard
+## Dashboard
 
-The dashboard subscribes to the MQTT topic above and writes `dashboard/dashboard.html`
-with the current status, the latest values, and trend charts (Plotly).
-Start the Wokwi simulation first, then run the dashboard from the project root.
-
-### With uv
-
-```
-uv venv
-uv pip install -r dashboard/requirements.txt
-uv run python dashboard/dashboard.py
-```
-
-### With pip
+A FastAPI backend (`dashboard/src/dashboard/`) subscribes to the MQTT topic above,
+stores every reading in SQLite (`dashboard/karhutla.db`), and serves a JSON API.
+The frontend (`dashboard/web/`) polls that API and updates the charts in place.
+Start the Wokwi simulation first, then run:
 
 ```
-python -m venv .venv
-.venv\Scripts\activate
-pip install -r dashboard/requirements.txt
-python dashboard/dashboard.py
+cd dashboard
+uv run fastapi dev     # auto-reload, for development
+uv run fastapi run     # or without reload
 ```
 
-On macOS or Linux, replace the activate line with `source .venv/bin/activate`.
+Open http://127.0.0.1:8000 in a browser. API docs are at http://127.0.0.1:8000/docs.
 
-Open `dashboard/dashboard.html` in a browser. It refreshes every 2 seconds.
-Press Ctrl+C to stop the dashboard.
+### API
+
+- `GET /api/readings?limit=300`: the latest readings, oldest first
+- `GET /api/readings?after_id=<id>`: readings newer than `id` (used for polling)
+- `GET /api/thresholds`: alert thresholds, drawn as dashed lines on the charts
+
+### Configuration
+
+Settings can be overridden with `DASHBOARD_*` environment variables or a
+`dashboard/.env` file, e.g. `DASHBOARD_MQTT_TOPIC`, `DASHBOARD_DB_PATH`.
+See `dashboard/src/dashboard/config.py` for the full list.
