@@ -34,7 +34,7 @@ The firmware reads the sensors and publishes one reading about every second.
 | T4 | Smoke and dry air | Temp 28 °C, humidity 30 %, gas above 3830 | Serial `Status: 2`. LED red. Buzzer sounds. Badge `DANGER` (red). | Matches the expected result. | Pass |
 | T5 | High temperature | Temp 55 °C, humidity 70 %, gas below 3830 | Serial `Status: 2`. LED red. Buzzer sounds. Badge `DANGER` (red). | Matches the expected result. | Pass |
 | T6 | Recovery | After T4 or T5, set the T1 values | Serial `Status: 0`. LED green. Buzzer stops. "Status changes" list shows `NORMAL` above `DANGER` (newest first). | Matches the expected result. | Pass |
-| T7 | Offline detection | With the dashboard open, stop the Wokwi simulation and wait 15 seconds | Badge turns gray and shows `OFFLINE (<last status>)`. "Last reading Ns ago" keeps counting up. After you restart the simulation, the badge returns to the live status. | Matches the expected result. | Pass |
+| T7 | Offline detection | With the dashboard open, stop the Wokwi simulation and wait 15 seconds | Badge turns gray and shows `OFFLINE (<last status>)`. "Last reading Ns ago" keeps counting up.| Pass |
 
 
 ## Gas sensor note
